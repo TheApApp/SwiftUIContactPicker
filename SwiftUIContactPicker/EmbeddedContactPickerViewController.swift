@@ -1,7 +1,7 @@
 import Foundation
 import ContactsUI
 
-protocol EmbeddedContactPickerViewControllerDelegate: class {
+protocol EmbeddedContactPickerViewControllerDelegate: AnyObject {
     func embeddedContactPickerViewControllerDidCancel(_ viewController: EmbeddedContactPickerViewController)
     func embeddedContactPickerViewController(_ viewController: EmbeddedContactPickerViewController, didSelect contact: CNContact)
 }
@@ -17,7 +17,7 @@ class EmbeddedContactPickerViewController: UIViewController, CNContactPickerDele
     private func open(animated: Bool) {
         let viewController = CNContactPickerViewController()
         viewController.delegate = self
-        self.present(viewController, animated: false)
+        self.present(viewController, animated: true)
     }
 
     func contactPickerDidCancel(_ picker: CNContactPickerViewController) {
